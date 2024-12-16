@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "localStorage Manager",
-    "version": "1.0",
-    "description": "Export and import localStorage",
+    "name": "Local Storage Manager",
+    "version": "1.1",
+    "description": "Export and import local storage",
     "permissions": ["activeTab", "clipboardWrite", "scripting"],
     "host_permissions": ["<all_urls>"],
     "action": {

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 result => {
                     if (chrome.runtime.lastError) {
-                        showMessage('Error: Cannot access localStorage', true);
+                        showMessage('Error: Cannot access local storage', true);
                         return;
                     }
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     navigator.clipboard
                         .writeText(storageData)
                         .then(() => {
-                            showMessage('localStorage exported to clipboard!');
+                            showMessage('Local storage exported to clipboard!');
                         })
                         .catch(err => {
                             showMessage('Failed to copy to clipboard', true);
@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
     importBtn.addEventListener('click', function () {
         if (!isImportMode) {
             importArea.style.display = 'block';
-            importBtn.textContent = 'Confirm Import';
+            importBtn.textContent = 'Confirm import';
+            exportBtn.style.display = 'none';
             isImportMode = true;
         } else {
             const jsonData = importArea.value.trim();
@@ -86,17 +87,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                     !result[0].result
                                 ) {
                                     showMessage(
-                                        'Error: Failed to import localStorage',
+                                        'Error: Failed to import local storage',
                                         true
                                     );
                                 } else {
                                     showMessage(
-                                        'LocalStorage imported successfully!'
+                                        'Local storage imported successfully!'
                                     );
                                     importArea.style.display = 'none';
-                                    importBtn.textContent =
-                                        'Import LocalStorage';
                                     importArea.value = '';
+                                    importBtn.style.display = 'none';
                                     isImportMode = false;
                                 }
                             }
